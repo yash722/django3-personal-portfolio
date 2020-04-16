@@ -1,0 +1,28 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+<h1 style="font-size:50px">My Profile</h1>
+{% load static %}
+<br />
+<img src="{% static 'portfolio/WELCOME-ST-IVES.jpg' %}" class="img-fluid mb-2"><br /><br />
+<p style="font-size:35px"><b> Hello to my first ever website!</b> <br /> Really glad to have you here!! Check about me in my blog posts.</p>
+<hr  />
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.desc }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
